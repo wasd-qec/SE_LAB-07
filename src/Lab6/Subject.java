@@ -42,7 +42,7 @@ public class Subject {
         SubjectData x = new SubjectData();
         x.setName("Introduction to SE");
         x.setTotalCredits(3);
-        x.setTotalHours(48);
+        x.setTotalHours(45);
 
         System.out.println(x);
     }
