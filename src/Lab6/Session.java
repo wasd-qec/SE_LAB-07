@@ -1,3 +1,5 @@
+
+
 public class Session {
     // Variables to store session time
     private int start;
@@ -6,10 +8,17 @@ public class Session {
     private String instructor;
     private boolean isActive;
 
+
     // Constructor - creates a new session
     public Session(String sessionName, String instructor) {
         this.sessionName = sessionName;
         this.instructor = instructor;
+        this.isActive = false;
+    }
+
+    public Session( String sessionName) {
+        this.sessionName = sessionName;
+        this.instructor = "BRo Nak";
         this.isActive = false;
     }
 
@@ -58,13 +67,13 @@ public class Session {
     // Start the session
     public void startSession() {
         this.isActive = true;
-        System.out.println("Session started: " + sessionName);
+        System.out.println("Session started at: " + start + " for " + sessionName);
     }
 
     // End the session
     public void endSession() {
         this.isActive = false;
-        System.out.println("Session ended: " + sessionName);
+        System.out.println("Session ended at: " + stop + " for " + sessionName);
     }
 
     // Display session info
@@ -83,10 +92,8 @@ public class Session {
         mySession.startSession();
         mySession.endSession();
 
-        Session defaultSession = new Session();
-        defaultSession.setDuration(10,12);
-        defaultSession.setSessionName("Default Session");
-        defaultSession.setInstructor("Ms. Johnson");
+        Session defaultSession = new Session("Default Session");
+        defaultSession.setDuration(14,12);
         defaultSession.startSession();
         defaultSession.displayInfo();
 
