@@ -1,10 +1,26 @@
 public class Session {
+    // Variables to store session time
     private int start;
     private int stop;
-    private int presentCount;
-    private int lateCount;
-    private int absentCount;
+    private String sessionName;
+    private String instructor;
+    private boolean isActive;
 
+    // Constructor - creates a new session
+    public Session(String sessionName, String instructor) {
+        this.sessionName = sessionName;
+        this.instructor = instructor;
+        this.isActive = false;
+    }
+
+    // Default constructor
+    public Session() {
+        this.sessionName = "Unnamed Session";
+        this.instructor = "Unknown";
+        this.isActive = false;
+    }
+
+    // Set the start and stop time for the session
     public void setDuration(int start, int stop) {
         if (start < 0 || stop < 0 || stop < start) {
             throw new IllegalArgumentException("Invalid start or stop time");
@@ -13,36 +29,58 @@ public class Session {
         this.stop = stop;
     }
 
-    public int getPresentCount() {
-        return presentCount;
+    // Get how long the session lasts
+    public int getDuration() {
+        return stop - start;
     }
 
-    public void setPresentCount(int presentCount) {
-        this.presentCount = presentCount;
+    // Getters and Setters
+    public String getSessionName() {
+        return sessionName;
     }
 
-    public int getLateCount() {
-        return lateCount;
+    public void setSessionName(String sessionName) {
+        this.sessionName = sessionName;
     }
 
-    public void setLateCount(int lateCount) {
-        this.lateCount = lateCount;
+    public String getInstructor() {
+        return instructor;
     }
 
-    public int getAbsentCount() {
-        return absentCount;
+    public void setInstructor(String instructor) {
+        this.instructor = instructor;
     }
 
-    public void setAbsentCount(int absentCount) {
-        this.absentCount = absentCount;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public double calculateAttendanceScore() {
-        int totalSessions = presentCount + lateCount + absentCount;
-        if (totalSessions == 0) {
-            return 0.0;
-        }
-        double score = ((presentCount + (lateCount * 0.5)) / (double) totalSessions) * 100;
-        return score;
+    // Start the session
+    public void startSession() {
+        this.isActive = true;
+        System.out.println("Session started: " + sessionName);
+    }
+
+    // End the session
+    public void endSession() {
+        this.isActive = false;
+        System.out.println("Session ended: " + sessionName);
+    }
+
+    // Display session info
+    public void displayInfo() {
+        System.out.println("Session: " + sessionName);
+        System.out.println("Instructor: " + instructor);
+        System.out.println("Duration: " + getDuration() + " Hours");
+        System.out.println("Status: " + (isActive ? "Active" : "Inactive"));
+    }
+
+    // Main method to test the class
+    public static void main(String[] args) {
+        Session mySession = new Session("Java Basics", "Mr. Smith");
+        mySession.setDuration(7,9 );
+        mySession.displayInfo();
+        mySession.startSession();
+        mySession.endSession();
     }
 }
