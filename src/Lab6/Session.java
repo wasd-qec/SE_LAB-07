@@ -82,5 +82,13 @@ public class Session {
         mySession.displayInfo();
         mySession.startSession();
         mySession.endSession();
+
+        Session defaultSession = new Session();
+        defaultSession.setDuration(10,12);
+        defaultSession.setSessionName("Default Session");
+        defaultSession.setInstructor("Ms. Johnson");
+        defaultSession.startSession();
+        defaultSession.displayInfo();
+
     }
 }
