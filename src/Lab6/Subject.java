@@ -83,8 +83,6 @@ public class Subject {
         x.setLateCount(2);
         x.setAbsentCount(1);
         
-        System.out.println("Attendance score: "+ x.calculateAttendanceScore() + "%");
-
         System.out.println(x);
     }
 }
