@@ -12,11 +12,11 @@ class SubjectData {
          return name; 
         }
     public void setName(String name) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("Name cannot be null or empty");
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Subject name cannot be null or empty");
         }
-        this.name = name;
-    }
+         this.name = name; 
+        }
 
     public int getTotalCredits() {
          return totalCredits; 
@@ -79,16 +79,48 @@ class SubjectData {
 
 public class Subject {
     public static void main(String[] args) {
+           // Test 1: Valid subject
+        System.out.println("=== Test 1: Valid Subject ===");
         SubjectData x = new SubjectData();
         x.setName("Introduction to SE");
         x.setTotalCredits(3);
         x.setTotalHours(45);
-
-        // Setting attendance data
         x.setPresentCount(10);
         x.setLateCount(2);
         x.setAbsentCount(1);
-        
         System.out.println(x);
+        
+        // Test 2: Null name
+        System.out.println("\n=== Test 2: Null Name ===");
+        try {
+            SubjectData y = new SubjectData();
+            y.setName(null);
+            y.setTotalCredits(3);
+            System.out.println(y);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+        
+        // Test 3: Empty name
+        System.out.println("\n=== Test 3: Empty Name ===");
+        try {
+            SubjectData z = new SubjectData();
+            z.setName("");
+            z.setTotalCredits(3);
+            System.out.println(z);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+        
+        // Test 4: Whitespace-only name
+        System.out.println("\n=== Test 4: Whitespace-only Name ===");
+        try {
+            SubjectData w = new SubjectData();
+            w.setName("   ");
+            w.setTotalCredits(3);
+            System.out.println(w);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
     }
-}
+    }
