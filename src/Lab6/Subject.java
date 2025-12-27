@@ -12,8 +12,11 @@ class SubjectData {
          return name; 
         }
     public void setName(String name) {
-         this.name = name; 
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
         }
+        this.name = name;
+    }
 
     public int getTotalCredits() {
          return totalCredits; 
@@ -50,7 +53,10 @@ class SubjectData {
     public void setAbsentCount(int absentCount) {
          this.absentCount = absentCount; 
         }
-
+    /**
+     * Calculates the score out of 100 based on attendance.
+     * Formula: ((Present + (Late * 0.5)) / Total Sessions) * 100
+     */
     public double calculateAttendanceScore() {
         int totalSessions = presentCount + lateCount + absentCount;
         
