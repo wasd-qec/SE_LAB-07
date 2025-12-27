@@ -1,9 +1,8 @@
 /**
  * Subject class represents an academic subject with name, credits, and hours.
  * 
- * @author Your Name
+ * @author Rith Chankolboth
  * @version 1.0
- * @since 2025-12-27
  */
 class Subject{
     String name;
