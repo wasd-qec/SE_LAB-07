@@ -10,7 +10,15 @@
  *   and limited use of global variables.
  * ------------------------------------------------------------
  */
-class SubjectData {
+
+public class Subject {
+        /* =======================
+       Constants (Global Usage)
+       ======================= */
+    public static final int MAX_CREDITS = 5;
+        /* =======================
+       Attributes
+       ======================= */
     private String name;
     private int totalCredits;
     private int totalHours;
@@ -19,10 +27,20 @@ class SubjectData {
     private int lateCount;
     private int absentCount;
 
-    // Existing Getters/Setters
+
+    /* =======================
+       Getters & Setters
+       ======================= */
+
     public String getName() {
          return name; 
         }
+    /**
+     * Sets the subject name.
+     * @param name subject name
+     * @throws IllegalArgumentException if name is null or empty
+     */
+
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Subject name cannot be null or empty");
@@ -33,7 +51,11 @@ class SubjectData {
     public int getTotalCredits() {
          return totalCredits; 
         }
+
     public void setTotalCredits(int totalCredits) { 
+         if (totalCredits < 0 || totalCredits > MAX_CREDITS) {
+            throw new IllegalArgumentException("Invalid credit value");
+        }
         this.totalCredits = totalCredits; 
     }
 
@@ -87,52 +109,5 @@ class SubjectData {
             presentCount, lateCount, absentCount
         );
     }
-}
 
-public class Subject {
-    public static void main(String[] args) {
-           // Test 1: Valid subject
-        System.out.println("=== Test 1: Valid Subject ===");
-        SubjectData x = new SubjectData();
-        x.setName("Introduction to SE");
-        x.setTotalCredits(3);
-        x.setTotalHours(45);
-        x.setPresentCount(10);
-        x.setLateCount(2);
-        x.setAbsentCount(1);
-        System.out.println(x);
-        
-        // Test 2: Null name
-        System.out.println("\n=== Test 2: Null Name ===");
-        try {
-            SubjectData y = new SubjectData();
-            y.setName(null);
-            y.setTotalCredits(3);
-            System.out.println(y);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Exception caught: " + e.getMessage());
-        }
-        
-        // Test 3: Empty name
-        System.out.println("\n=== Test 3: Empty Name ===");
-        try {
-            SubjectData z = new SubjectData();
-            z.setName("");
-            z.setTotalCredits(3);
-            System.out.println(z);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Exception caught: " + e.getMessage());
-        }
-        
-        // Test 4: Whitespace-only name
-        System.out.println("\n=== Test 4: Whitespace-only Name ===");
-        try {
-            SubjectData w = new SubjectData();
-            w.setName("   ");
-            w.setTotalCredits(3);
-            System.out.println(w);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Exception caught: " + e.getMessage());
-        }
-    }
-    }
+}

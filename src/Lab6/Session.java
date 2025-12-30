@@ -1,5 +1,13 @@
 
-
+/**
+ * ------------------------------------------------------------
+ * Class Name: Session
+ * Author: Seavhong, Vathanak, Kolboth
+ * Course: Introduction to Software Engineering
+ * Description:
+ *   Represents a study session during a day.
+ * ------------------------------------------------------------
+ */
 public class Session {
     // Variables to store session time
     private int start;
@@ -29,7 +37,13 @@ public class Session {
         this.isActive = false;
     }
 
-    // Set the start and stop time for the session
+    /**
+     * Sets session duration.
+     * @param startTime starting hour (integer)
+     * @param endTime ending hour (integer)
+     * @throws IllegalArgumentException if startTime >= endTime
+     */
+    
     public void setDuration(int start, int stop) {
         if (start < 0 || stop < 0 || stop < start) {
             throw new IllegalArgumentException("Invalid start or stop time");
