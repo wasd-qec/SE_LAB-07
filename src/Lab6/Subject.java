@@ -1,3 +1,15 @@
+/**
+ * ------------------------------------------------------------
+ * Class Name: Subject
+ * Author: Seavhong, Vathanak, Kolboth
+ * Course: Introduction to Software Engineering
+ * Lab: SE - Lab 06 (Coding Standards)
+ * Description:
+ *   This class represents a Year 2 subject/course.
+ *   It follows Java coding standards, naming conventions,
+ *   and limited use of global variables.
+ * ------------------------------------------------------------
+ */
 class SubjectData {
     private String name;
     private int totalCredits;
